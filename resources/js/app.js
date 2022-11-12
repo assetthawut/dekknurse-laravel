@@ -28,10 +28,15 @@ Vue.component('my-event-component', require('./components/MyEventComponent.vue')
 Vue.component('event-create-component', require('./components/EventCreateComponent.vue').default);
 Vue.component('event-update-component', require('./components/EventUpdateComponent.vue').default);
 Vue.component('login-footer-component', require('./components/LoginFooterComponent.vue').default);
+Vue.component('post-tag-component', require('./components/PostTagComponent.vue').default);
+Vue.component('post-tag-view-component', require('./components/PostTagViewComponent.vue').default);
+Vue.component('post-tag-detail-component', require('./components/PostTagDetailComponent.vue').default);
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import 'vue-select/dist/vue-select.css';
+
 library.add(faUserSecret)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
@@ -48,11 +53,16 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import Vue from 'vue'
+import vSelect from 'vue-select'
+
 
 // Make BootstrapVue available throughout your project
 Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
+Vue.component('v-select', vSelect)
+console.log("vSelect",vSelect)
 
 
 const app = new Vue({

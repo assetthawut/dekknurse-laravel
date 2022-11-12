@@ -5,6 +5,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\AccountController;
+use App\Http\Controllers\HashtagController;
+use App\Http\Controllers\CommentController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +39,21 @@ Route::post('event/views', [EventController::class,"updateEventViews"]);
 Route::get('event', [EventController::class,"index"]);
 Route::post('user/login', [UserController::class,"login"]);
 Route::get('user/most-active-user/{platformId}', [UserController::class,"mostActiveUser"]);
+Route::patch('post/{postId}/like', [PostController::class,"likePost"]);
+Route::patch('post/{postId}/retweet', [PostController::class,"retweetPost"]);
+Route::patch('post/{postId}/favorite', [PostController::class,"favoritePost"]);
+Route::post('post/sibling', [PostController::class,"createSiblingPost"]);
+Route::get('post/latest', [PostController::class,"getlatestPostList"]);
+Route::get('post/list', [PostController::class,"getPostList"]);
+Route::resource('post', PostController::class);
+Route::get('account/tagged', [AccountController::class,"getTaggedList"]);
+Route::get('account/list', [AccountController::class,"getAccountList"]);
+Route::patch('account/{id}/update-profile-image', [AccountController::class,"updateProfileImage"]);
+Route::resource('account', AccountController::class);
+Route::get('hashtag/tagged', [HashtagController::class,"getTaggedList"]);
+Route::resource('hashtag', HashtagController::class);
+Route::resource('comment', CommentController::class);
+
 
 Route::get( 'auth/verify-fail', function () {
     $data = array(

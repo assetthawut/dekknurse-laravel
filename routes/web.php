@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileViewController;
 use App\Http\Controllers\CalendarViewController;
 use App\Http\Controllers\AuthViewController;
 use App\Http\Controllers\EventViewController;
+use App\Http\Controllers\PostTagViewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,7 @@ use App\Http\Controllers\EventViewController;
 */
 
 Route::get('/', function () {
-    return redirect('/paras');
+    // return redirect('/paras');
 });
 
 Route::get('login', [AuthViewController::class,"login"]);
@@ -28,3 +29,5 @@ Route::get('paras', [EventViewController::class,"parasCalendar"]);
 Route::get('crypto', [EventViewController::class,"cryptoCalendar"]);
 Route::get('my-event', [EventViewController::class,"myEvent"]);
 Route::resource('event', EventViewController::class);
+Route::resource('post-tag', PostTagViewController::class);
+
